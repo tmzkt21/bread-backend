@@ -20,13 +20,13 @@ public class QBreadCategory extends EntityPathBase<BreadCategory> {
 
     public static final QBreadCategory breadCategory = new QBreadCategory("breadCategory");
 
+    public final StringPath allergy = createString("allergy");
+
     public final ListPath<Bread, QBread> breads = this.<Bread, QBread>createList("breads", Bread.class, QBread.class, PathInits.DIRECT2);
 
     public final NumberPath<Long> chartId = createNumber("chartId", Long.class);
 
     public final StringPath option = createString("option");
-
-    public final StringPath visitor = createString("visitor");
 
     public QBreadCategory(String variable) {
         super(BreadCategory.class, forVariable(variable));

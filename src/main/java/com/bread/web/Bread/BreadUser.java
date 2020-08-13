@@ -11,6 +11,7 @@ import java.util.List;
 @Setter
 @ToString
 @NoArgsConstructor
+@Table(name = "bread_user")
 public class BreadUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,6 +20,7 @@ public class BreadUser {
     @Column(name = "name", nullable = false) private String name;
     @Column(name = "phone", nullable = false) private String phone;
     @Column(name = "email", nullable = false) private String email;
+    @Column(name = "address", nullable = false) private String address;
 
     @OneToMany(mappedBy = "breadUser")
     private List<BreadOrder> breadOrders = new ArrayList<BreadOrder>();

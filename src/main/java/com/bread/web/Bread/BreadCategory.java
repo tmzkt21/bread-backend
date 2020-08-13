@@ -11,12 +11,14 @@ import java.util.List;
 @Setter
 @ToString
 @NoArgsConstructor
+@Table(name = "bread_categoty")
 public class BreadCategory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "chart_id") private Long chartId;
-    @Column(name = "visitor", nullable = false) private String visitor;
     @Column(name = "option", nullable = false) private String option;
+    @Column(name = "allergy", nullable = false) private String allergy;
+
 
     @OneToMany(mappedBy = "breadCategory")
     private List<Bread> breads = new ArrayList<Bread>();

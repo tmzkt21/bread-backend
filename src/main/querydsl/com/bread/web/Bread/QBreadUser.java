@@ -20,6 +20,8 @@ public class QBreadUser extends EntityPathBase<BreadUser> {
 
     public static final QBreadUser breadUser = new QBreadUser("breadUser");
 
+    public final StringPath address = createString("address");
+
     public final ListPath<BreadOrder, QBreadOrder> breadOrders = this.<BreadOrder, QBreadOrder>createList("breadOrders", BreadOrder.class, QBreadOrder.class, PathInits.DIRECT2);
 
     public final StringPath email = createString("email");

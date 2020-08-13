@@ -22,13 +22,13 @@ public class QBreadOrder extends EntityPathBase<BreadOrder> {
 
     public static final QBreadOrder breadOrder = new QBreadOrder("breadOrder");
 
-    public final StringPath amount = createString("amount");
-
     public final QBread bread;
 
     public final QBreadShipping breadShipping;
 
     public final QBreadUser breadUser;
+
+    public final StringPath orderAmount = createString("orderAmount");
 
     public final StringPath orderDate = createString("orderDate");
 

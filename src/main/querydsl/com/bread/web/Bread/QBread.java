@@ -28,13 +28,11 @@ public class QBread extends EntityPathBase<Bread> {
 
     public final NumberPath<Long> breadId = createNumber("breadId", Long.class);
 
+    public final StringPath breadImage = createString("breadImage");
+
     public final StringPath breadName = createString("breadName");
 
-    public final StringPath breadNumberPrice = createString("breadNumberPrice");
-
     public final ListPath<BreadOrder, QBreadOrder> breadOrders = this.<BreadOrder, QBreadOrder>createList("breadOrders", BreadOrder.class, QBreadOrder.class, PathInits.DIRECT2);
-
-    public final StringPath breadPhotography = createString("breadPhotography");
 
     public final StringPath breadPrice = createString("breadPrice");
 
