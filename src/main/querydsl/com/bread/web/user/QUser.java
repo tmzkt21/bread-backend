@@ -1,4 +1,4 @@
-package com.bread.web.Bread;
+package com.bread.web.user;
 
 import static com.querydsl.core.types.PathMetadataFactory.*;
 
@@ -11,18 +11,16 @@ import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
- * QBreadUser is a Querydsl query type for BreadUser
+ * QUser is a Querydsl query type for User
  */
 @Generated("com.querydsl.codegen.EntitySerializer")
-public class QBreadUser extends EntityPathBase<BreadUser> {
+public class QUser extends EntityPathBase<User> {
 
-    private static final long serialVersionUID = 640024688L;
+    private static final long serialVersionUID = 513939377L;
 
-    public static final QBreadUser breadUser = new QBreadUser("breadUser");
+    public static final QUser user = new QUser("user");
 
-    public final StringPath address = createString("address");
-
-    public final ListPath<BreadOrder, QBreadOrder> breadOrders = this.<BreadOrder, QBreadOrder>createList("breadOrders", BreadOrder.class, QBreadOrder.class, PathInits.DIRECT2);
+    public final ListPath<com.bread.web.Bread.BreadOrder, com.bread.web.Bread.QBreadOrder> breadOrders = this.<com.bread.web.Bread.BreadOrder, com.bread.web.Bread.QBreadOrder>createList("breadOrders", com.bread.web.Bread.BreadOrder.class, com.bread.web.Bread.QBreadOrder.class, PathInits.DIRECT2);
 
     public final StringPath email = createString("email");
 
@@ -36,16 +34,16 @@ public class QBreadUser extends EntityPathBase<BreadUser> {
 
     public final NumberPath<Long> userNo = createNumber("userNo", Long.class);
 
-    public QBreadUser(String variable) {
-        super(BreadUser.class, forVariable(variable));
+    public QUser(String variable) {
+        super(User.class, forVariable(variable));
     }
 
-    public QBreadUser(Path<? extends BreadUser> path) {
+    public QUser(Path<? extends User> path) {
         super(path.getType(), path.getMetadata());
     }
 
-    public QBreadUser(PathMetadata metadata) {
-        super(BreadUser.class, metadata);
+    public QUser(PathMetadata metadata) {
+        super(User.class, metadata);
     }
 
 }

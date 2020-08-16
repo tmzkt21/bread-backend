@@ -8,6 +8,7 @@ import javax.persistence.*;
 @Setter
 @ToString
 @NoArgsConstructor
+@Table(name = "bread_chart")
 public class BreadChart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

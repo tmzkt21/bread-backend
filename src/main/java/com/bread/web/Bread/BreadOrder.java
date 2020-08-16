@@ -11,12 +11,13 @@ import java.util.List;
 @Setter
 @ToString
 @NoArgsConstructor
+@Table(name = "bread_order")
 public class BreadOrder {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_id") private Long orderId;
     @Column(name = "order_date", nullable = false) private String orderDate;
-    @Column(name = "amount", nullable = false) private String amount;
+    @Column(name = "oreder_amount", nullable = false) private String orderAmount;
     @Column(name = "order_status", nullable = false) private String orderStatus;
     @Column(name = "order_method", nullable = false) private String orderMethod;
 
