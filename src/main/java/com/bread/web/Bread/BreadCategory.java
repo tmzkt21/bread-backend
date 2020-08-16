@@ -15,12 +15,9 @@ import java.util.List;
 public class BreadCategory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-<<<<<<< HEAD
     @Column(name = "category_id") private Long categoryId;
     @Column(name = "kind", nullable = false) private String visitor;
-=======
     @Column(name = "chart_id") private Long chartId;
->>>>>>> 07499dee9c8279e24149d09d87aea72bd885102b
     @Column(name = "option", nullable = false) private String option;
     @Column(name = "allergy", nullable = false) private String allergy;
 
