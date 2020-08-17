@@ -1,5 +1,7 @@
 package com.bread.web.utils;
 
+import com.bread.web.user.User;
+
 import java.util.Optional;
 
 public interface GenericService<T> {
@@ -9,4 +11,5 @@ public interface GenericService<T> {
     public int count();
     public void delete(String id);
     public boolean exists(String id) ;
+
 }

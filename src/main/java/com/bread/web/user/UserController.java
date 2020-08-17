@@ -1,10 +1,9 @@
 package com.bread.web.user;
 
-import com.amazonaws.services.apigateway.model.Op;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.HashMap;
 import java.util.Optional;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -13,20 +12,31 @@ import java.util.Optional;
 public class UserController {
     private final UserService userService;
     private final UserRepository userRepository;
+    private final  User user;
 
-    public UserController(UserService userService, UserRepository userRepository) {
+    public UserController(UserService userService, UserRepository userRepository, User user) {
         this.userService = userService;
         this.userRepository = userRepository;
+        this.user = user;
     }
+
     @PostMapping("/signIn")
-    public String signIn(String userId, String password) {
-        System.out.println("id : {} , pw : {}"+ userId + password);
-        User user = userRepository.findUser(userId, password);
-        if(user != null) {
-            return "loginOK";
+    public ResponseEntity<User> signIn(@RequestBody User user) {
+        System.out.println(user);
+    Optional<User> findByUserId = userService.findByUserId(user.getUserId());
+    if (findByUserId.isPresent()) {
+        User userLogin = findByUserId.get();
+        if (user.getPassword().equals(userLogin.getPassword())) {
+            return ResponseEntity.ok(userLogin);
+        } else {
+            return ResponseEntity.badRequest().build();
         }
-        return "loginFail";
+    } else {
+        return ResponseEntity.notFound().build();
     }
+
+    }
+
 
     // 회원가입
     @PostMapping("/register")
@@ -34,24 +44,24 @@ public class UserController {
         User newUser = userRepository.save(user);
         return user.getName() + "님의 회원가입을 축하합니다";
     }
+
     // read 회원검색
     @GetMapping("/finduser")
     public User findUser(@RequestBody Long id) {
         Optional<User> user = userRepository.findById(id);
         return user.get();
     }
+
     // 회원 정보변경
     @PutMapping("/changeinfo")
     public Optional<User> changeInfo(@RequestBody Long userNo , @RequestBody User user){
         Optional<User> updateUser = userRepository.findById(userNo);
-
         updateUser.ifPresent(selectUser->{
             selectUser.setName(user.getName());
             selectUser.setUserId(user.getUserId());
             selectUser.setPassword(user.getPassword());
             selectUser.setEmail(user.getEmail());
             selectUser.setPhone(user.getPhone());
-
             userRepository.save(selectUser);
         });
         return updateUser;

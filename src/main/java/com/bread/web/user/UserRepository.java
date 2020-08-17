@@ -6,6 +6,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User, Long>, CustomUserRepository {
-    @Query("select m from User m where userId = :userId and password = :password")
-    User findUser(String userId, String password);
+
+    Optional<User> findByUserId(String userId);
+
 }

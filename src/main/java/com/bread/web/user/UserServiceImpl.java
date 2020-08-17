@@ -1,20 +1,21 @@
 package com.bread.web.user;
 import com.bread.web.utils.GenericService;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 interface UserService extends GenericService<User> {
 
+Optional<User> findByUserId(String userId);
 
 
 
 }
 
-@Service
+@Service @AllArgsConstructor
 public class UserServiceImpl implements UserService {
-
+    final private UserRepository userRepository;
 
     @Override
     public Optional<User> findById(String id) {
@@ -40,4 +41,15 @@ public class UserServiceImpl implements UserService {
     public boolean exists(String id) {
         return false;
     }
+
+
+
+
+    @Override
+    public Optional<User> findByUserId(String userId) {
+        return userRepository.findByUserId(userId);
+    }
+
+
+
 }
