@@ -69,16 +69,11 @@ public class UserController {
     // 회원삭제
     @PostMapping("/delete")
     public Optional<User> userDelete(@RequestBody User user){
-        Optional<User> usercancle = userRepository.findById(4L);
-        usercancle.ifPresent(selectUser ->{
+        Optional<User> userCancle = userRepository.findByUserId(user.getUserId());
+        System.out.println(userCancle);
+        userCancle.ifPresent(selectUser ->{
             userRepository.delete(selectUser);
         });
-        return usercancle;
+        return userCancle;
     }
-
-
-
-
-
-
 }

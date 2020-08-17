@@ -7,7 +7,7 @@ import java.util.Optional;
 
 interface UserService extends GenericService<User> {
 
-Optional<User> findByUserId(String userId);
+    Optional<User> findByUserId(String userId);
 
 
 
@@ -42,14 +42,9 @@ public class UserServiceImpl implements UserService {
         return false;
     }
 
-
-
-
     @Override
     public Optional<User> findByUserId(String userId) {
         return userRepository.findByUserId(userId);
     }
-
-
 
 }
