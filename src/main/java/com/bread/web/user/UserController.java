@@ -1,9 +1,10 @@
 package com.bread.web.user;
 
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -50,7 +51,14 @@ public class UserController {
         return user.get();
     }
 
+    // 회원목록 출력
+    @GetMapping("/userList")
+    public List<User> findAll(){
 
+        return userRepository.findAll();
+    }
+
+    // 회원 정보 변경
     @PatchMapping("/changeInfo/{userId}")
     public ResponseEntity<User> changeInfo(@PathVariable String userId, @RequestBody User user){
         Optional<User> updateUser = userService.findByUserId(user.getUserId());
@@ -70,22 +78,6 @@ public class UserController {
             return ResponseEntity.notFound().build();
         }
     }
-    // 회원 정보변경
-//    @PutMapping("/changeInfo")
-//    public Optional<User> changeInfo(@RequestBody User user){
-//        Optional<User> updateUser = userRepository.findByUserId(user.getUserId());
-//        System.out.println("회원 정보 변경들어옴"+updateUser);
-//        updateUser.ifPresent(selectUser->{
-//            selectUser.setName(user.getName());
-//            selectUser.setUserId(user.getUserId());
-//            selectUser.setPassword(user.getPassword());
-//            selectUser.setEmail(user.getEmail());
-//            selectUser.setPhone(user.getPhone());
-//            userRepository.save(selectUser);
-//        });
-//        System.out.println("회원 정보 변경들어옴 리턴"+updateUser);
-//        return updateUser;
-//    }
 
 
 

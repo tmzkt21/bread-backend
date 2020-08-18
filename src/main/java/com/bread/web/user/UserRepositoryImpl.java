@@ -12,10 +12,10 @@ interface CustomUserRepository {
 @Repository
 public class UserRepositoryImpl extends QuerydslRepositorySupport implements CustomUserRepository{
 
-    private final  JPAQueryFactory queryFactory;
-    public UserRepositoryImpl(JPAQueryFactory queryFactory) {
+    private final  JPAQueryFactory jpaQueryFactory;
+    public UserRepositoryImpl(JPAQueryFactory jpaQueryFactory) {
         super(User.class);
-        this.queryFactory = queryFactory;
+        this.jpaQueryFactory = jpaQueryFactory;
     }
 
 }

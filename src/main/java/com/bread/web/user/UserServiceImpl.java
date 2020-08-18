@@ -9,8 +9,6 @@ interface UserService extends GenericService<User> {
 
     Optional<User> findByUserId(String userId);
 
-
-
 }
 
 @Service @AllArgsConstructor
@@ -18,13 +16,18 @@ public class UserServiceImpl implements UserService {
     final private UserRepository userRepository;
 
     @Override
-    public Optional<User> findById(String id) {
-        return Optional.empty();
+    public void save(User user) {
+        userRepository.save(user);
+    }
+
+    @Override
+    public Optional<User> findById(Long id) {
+        return userRepository.findById(id);
     }
 
     @Override
     public Iterable<User> findAll() {
-        return null;
+        return userRepository.findAll();
     }
 
     @Override
