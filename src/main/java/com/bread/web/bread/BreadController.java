@@ -15,6 +15,7 @@ import java.util.Map;
 @RequestMapping("/bread")
 public class BreadController {
     private final BreadService breadService;
+    private final BreadRepository breadRepository;
     @Autowired Box box;
 
     @GetMapping("/data")
@@ -41,6 +42,12 @@ public class BreadController {
     @PostMapping("/allUpdate")
     public void allUpdate(@RequestBody List<Bread> bread){
         breadService.allUpdate(bread);
+    }
+
+    // 빵리스트 출력
+    @GetMapping("/findAll")
+    public List<Bread> findAll(){
+        return breadRepository.findAll();
     }
 
 }

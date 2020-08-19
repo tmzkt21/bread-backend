@@ -24,17 +24,17 @@ public class UserController {
     @PostMapping("/signIn")
     public ResponseEntity<User> signIn(@RequestBody User user) {
         System.out.println(user);
-    Optional<User> findByUserId = userService.findByUserId(user.getUserId());
-    if (findByUserId.isPresent()) {
-        User userLogin = findByUserId.get();
-        if (user.getPassword().equals(userLogin.getPassword())) {
-            return ResponseEntity.ok(userLogin);
+        Optional<User> findByUserId = userService.findByUserId(user.getUserId());
+        if (findByUserId.isPresent()) {
+            User userLogin = findByUserId.get();
+            if (user.getPassword().equals(userLogin.getPassword())) {
+                return ResponseEntity.ok(userLogin);
+            } else {
+                return ResponseEntity.badRequest().build();
+            }
         } else {
-            return ResponseEntity.badRequest().build();
+            return ResponseEntity.notFound().build();
         }
-    } else {
-        return ResponseEntity.notFound().build();
-    }
 
     }
     // 회원가입
@@ -63,12 +63,12 @@ public class UserController {
         Optional<User> updateUser = userService.findByUserId(user.getUserId());
         if (updateUser.isPresent()){
             updateUser.ifPresent(selectUser ->{
-            selectUser.setName(user.getName());
-            selectUser.setUserId(user.getUserId());
-            selectUser.setPassword(user.getPassword());
-            selectUser.setEmail(user.getEmail());
-            selectUser.setPhone(user.getPhone());
-            userRepository.save(selectUser);
+                selectUser.setName(user.getName());
+                selectUser.setUserId(user.getUserId());
+                selectUser.setPassword(user.getPassword());
+                selectUser.setEmail(user.getEmail());
+                selectUser.setPhone(user.getPhone());
+                userRepository.save(selectUser);
             });
             return ResponseEntity.ok(updateUser.get());
         } else {
