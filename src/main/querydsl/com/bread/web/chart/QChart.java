@@ -1,4 +1,4 @@
-package com.bread.web.Bread;
+package com.bread.web.chart;
 
 import static com.querydsl.core.types.PathMetadataFactory.*;
 
@@ -10,14 +10,14 @@ import com.querydsl.core.types.Path;
 
 
 /**
- * QBreadChart is a Querydsl query type for BreadChart
+ * QChart is a Querydsl query type for Chart
  */
 @Generated("com.querydsl.codegen.EntitySerializer")
-public class QBreadChart extends EntityPathBase<BreadChart> {
+public class QChart extends EntityPathBase<Chart> {
 
-    private static final long serialVersionUID = -1651025959L;
+    private static final long serialVersionUID = -403653519L;
 
-    public static final QBreadChart breadChart = new QBreadChart("breadChart");
+    public static final QChart chart = new QChart("chart");
 
     public final NumberPath<Long> chartId = createNumber("chartId", Long.class);
 
@@ -25,16 +25,16 @@ public class QBreadChart extends EntityPathBase<BreadChart> {
 
     public final StringPath visitor = createString("visitor");
 
-    public QBreadChart(String variable) {
-        super(BreadChart.class, forVariable(variable));
+    public QChart(String variable) {
+        super(Chart.class, forVariable(variable));
     }
 
-    public QBreadChart(Path<? extends BreadChart> path) {
+    public QChart(Path<? extends Chart> path) {
         super(path.getType(), path.getMetadata());
     }
 
-    public QBreadChart(PathMetadata metadata) {
-        super(BreadChart.class, metadata);
+    public QChart(PathMetadata metadata) {
+        super(Chart.class, metadata);
     }
 
 }

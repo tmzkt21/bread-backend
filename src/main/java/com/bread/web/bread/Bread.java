@@ -1,8 +1,8 @@
-package com.bread.web.Bread;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+package com.bread.web.bread;
+import com.bread.web.category.Category;
+import com.bread.web.order.BreadOrder;
+import lombok.*;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,9 +20,19 @@ public class Bread {
     @Column(name = "bread_image", nullable = false) private String breadImage;
     @Column(name = "bread_price", nullable = false) private String breadPrice;
     @Column(name = "bread_description", nullable = false) private String breadDescription;
+
+    @Builder
+    public Bread(String breadName,String breadImage,String breadPrice,String breadDescription) {
+        this.breadName = breadName;
+        this.breadImage = breadImage;
+        this.breadPrice = breadPrice;
+        this.breadDescription = breadDescription;
+    }
+
     @OneToMany(mappedBy = "bread")
     private List<BreadOrder> breadOrders = new ArrayList<BreadOrder>();
+
     @ManyToOne
-    @JoinColumn(name = "chart_id")
-    private BreadCategory breadCategory;
+    @JoinColumn(name = "category_id")
+    private Category category;
 }

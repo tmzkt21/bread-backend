@@ -1,11 +1,10 @@
-package com.bread.web.Bread;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+package com.bread.web.order;
+import com.bread.web.bread.Bread;
+import com.bread.web.shipping.Shipping;
+import com.bread.web.user.User;
+import lombok.*;
+
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity @Getter
 @Setter
@@ -17,13 +16,21 @@ public class BreadOrder {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_id") private Long orderId;
     @Column(name = "order_date", nullable = false) private String orderDate;
-    @Column(name = "oreder_amount", nullable = false) private String orderAmount;
+    @Column(name = "order_amount", nullable = false) private String orderAmount;
     @Column(name = "order_status", nullable = false) private String orderStatus;
     @Column(name = "order_method", nullable = false) private String orderMethod;
 
+    @Builder
+    public BreadOrder(String orderDate,String orderAmount,String orderStatus,String orderMethod) {
+        this.orderDate = orderDate;
+        this.orderAmount = orderAmount;
+        this.orderStatus = orderStatus;
+        this.orderMethod = orderMethod;
+    }
+
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private BreadUser breadUser;
+    private User user;
 
     @ManyToOne
     @JoinColumn(name = "bread_id")
@@ -31,5 +38,5 @@ public class BreadOrder {
 
     @OneToOne
     @JoinColumn(name = "shipping_id")
-    private BreadShipping breadShipping;
+    private Shipping shipping;
 }

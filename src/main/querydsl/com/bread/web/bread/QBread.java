@@ -1,4 +1,4 @@
-package com.bread.web.Bread;
+package com.bread.web.bread;
 
 import static com.querydsl.core.types.PathMetadataFactory.*;
 
@@ -16,13 +16,11 @@ import com.querydsl.core.types.dsl.PathInits;
 @Generated("com.querydsl.codegen.EntitySerializer")
 public class QBread extends EntityPathBase<Bread> {
 
-    private static final long serialVersionUID = 1577364229L;
+    private static final long serialVersionUID = -90504411L;
 
     private static final PathInits INITS = PathInits.DIRECT2;
 
     public static final QBread bread = new QBread("bread");
-
-    public final QBreadCategory breadCategory;
 
     public final StringPath breadDescription = createString("breadDescription");
 
@@ -32,9 +30,11 @@ public class QBread extends EntityPathBase<Bread> {
 
     public final StringPath breadName = createString("breadName");
 
-    public final ListPath<BreadOrder, QBreadOrder> breadOrders = this.<BreadOrder, QBreadOrder>createList("breadOrders", BreadOrder.class, QBreadOrder.class, PathInits.DIRECT2);
+    public final ListPath<com.bread.web.order.BreadOrder, com.bread.web.order.QBreadOrder> breadOrders = this.<com.bread.web.order.BreadOrder, com.bread.web.order.QBreadOrder>createList("breadOrders", com.bread.web.order.BreadOrder.class, com.bread.web.order.QBreadOrder.class, PathInits.DIRECT2);
 
     public final StringPath breadPrice = createString("breadPrice");
+
+    public final com.bread.web.category.QCategory category;
 
     public QBread(String variable) {
         this(Bread.class, forVariable(variable), INITS);
@@ -54,7 +54,7 @@ public class QBread extends EntityPathBase<Bread> {
 
     public QBread(Class<? extends Bread> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.breadCategory = inits.isInitialized("breadCategory") ? new QBreadCategory(forProperty("breadCategory")) : null;
+        this.category = inits.isInitialized("category") ? new com.bread.web.category.QCategory(forProperty("category")) : null;
     }
 
 }
