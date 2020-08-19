@@ -1,12 +1,16 @@
 package com.bread.web.bread;
 
+import com.bread.web.user.User;
 import com.bread.web.utils.GenericService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 interface BreadService extends GenericService<Bread> {
+
+    void allUpdate(List<Bread> user);
 
 }
 @Service @AllArgsConstructor
@@ -40,5 +44,10 @@ private final BreadRepository breadRepository;
     @Override
     public void delete(String id) {
 
+    }
+
+    @Override
+    public void allUpdate(List<Bread> bread) {
+        breadRepository.saveAll(bread);
     }
 }

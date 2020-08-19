@@ -3,11 +3,13 @@ import com.bread.web.utils.GenericService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 interface UserService extends GenericService<User> {
 
     Optional<User> findByUserId(String userId);
+    void allUpdate(List<User> user);
 
 }
 
@@ -50,7 +52,10 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByUserId(userId);
     }
 
-
+    @Override
+    public void allUpdate(List<User> user) {
+        userRepository.saveAll(user);
+    }
 
 
 }

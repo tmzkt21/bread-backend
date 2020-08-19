@@ -40,8 +40,8 @@ public class UserController {
     // 회원가입
     @PostMapping("/register")
     public String register(@RequestBody User user) {
-        User newUser = userRepository.save(user);
-        return user.getName() + "님의 회원가입을 축하합니다";
+        userRepository.save(user);
+        return "님의 회원가입을 축하합니다";
     }
 
     // read 회원검색
@@ -52,9 +52,8 @@ public class UserController {
     }
 
     // 회원목록 출력
-    @GetMapping("/userList")
+    @GetMapping("/findAll")
     public List<User> findAll(){
-
         return userRepository.findAll();
     }
 
@@ -79,9 +78,6 @@ public class UserController {
         }
     }
 
-
-
-
     // 회원삭제
     @PostMapping("/delete")
     public Optional<User> userDelete(@RequestBody User user){
@@ -91,5 +87,10 @@ public class UserController {
             userRepository.delete(selectUser);
         });
         return userCancle;
+    }
+
+    @PostMapping("/allUpdate")
+    public void allUpdate(@RequestBody List<User> user){
+        userService.allUpdate(user);
     }
 }
