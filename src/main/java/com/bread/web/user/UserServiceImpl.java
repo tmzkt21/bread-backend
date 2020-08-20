@@ -1,8 +1,14 @@
 package com.bread.web.user;
 import com.bread.web.utils.GenericService;
 import lombok.AllArgsConstructor;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVParser;
+import org.apache.commons.csv.CSVRecord;
 import org.springframework.stereotype.Service;
-
+import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,6 +16,7 @@ interface UserService extends GenericService<User> {
 
     Optional<User> findByUserId(String userId);
     void allUpdate(List<User> user);
+    void readCsv();
 
 }
 
@@ -56,6 +63,12 @@ public class UserServiceImpl implements UserService {
     public void allUpdate(List<User> user) {
         userRepository.saveAll(user);
     }
+
+    @Override
+    public void readCsv() {
+      
+    }
+
 
 
 }

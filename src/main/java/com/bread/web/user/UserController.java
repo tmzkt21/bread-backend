@@ -14,6 +14,10 @@ public class UserController {
     private final UserRepository userRepository;
     private final  User user;
 
+    @GetMapping("/csv")
+    public void readCsv() {
+        userService.readCsv();
+    }
 
 
     @PostMapping("/signIn")
