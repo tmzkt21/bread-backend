@@ -16,6 +16,7 @@ interface UserService extends GenericService<User> {
 
     Optional<User> findByUserId(String userId);
     void allUpdate(List<User> user);
+    void readCsv();
 
 }
 
@@ -63,7 +64,29 @@ public class UserServiceImpl implements UserService {
         userRepository.saveAll(user);
     }
 
+    @Override
+    public void readCsv() {
+        InputStream is = getClass().getResourceAsStream("/static/user.csv");
 
+        try {
+            BufferedReader fileReader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+            CSVParser csvParser = new CSVParser(fileReader, CSVFormat.DEFAULT);
+            Iterable<CSVRecord> csvRecords = csvParser.getRecords();
+            for (CSVRecord csvRecord : csvRecords) {
+                userRepository.save(new User(
+                        csvRecord.get(1),
+                        csvRecord.get(2),
+                        csvRecord.get(3),
+                        csvRecord.get(4),
+                        csvRecord.get(5),
+                        csvRecord.get(6),
+                        csvRecord.get(7)
+                        ));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 
 }

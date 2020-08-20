@@ -13,6 +13,13 @@ public class UserController {
     private final UserService userService;
     private final UserRepository userRepository;
     private final  User user;
+
+    @GetMapping("/csv")
+    public void readCsv() {
+        userService.readCsv();
+    }
+
+
     @PostMapping("/signIn")
     public ResponseEntity<User> signIn(@RequestBody User user) {
         System.out.println(user);
