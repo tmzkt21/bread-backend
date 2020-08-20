@@ -16,7 +16,6 @@ interface UserService extends GenericService<User> {
 
     Optional<User> findByUserId(String userId);
     void allUpdate(List<User> user);
-    void readCsv();
 
 }
 
@@ -64,10 +63,6 @@ public class UserServiceImpl implements UserService {
         userRepository.saveAll(user);
     }
 
-    @Override
-    public void readCsv() {
-      
-    }
 
 
 

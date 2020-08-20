@@ -18,6 +18,9 @@ public class BreadController {
     private final BreadRepository breadRepository;
     @Autowired Box box;
 
+    @GetMapping("/csv")
+    public void readCsv() {breadService.readCsv();}
+
     @GetMapping("/data")
     public Map<?,?> hospitalData(){
         System.out.println("들어옴");
