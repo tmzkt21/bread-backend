@@ -1,25 +1,20 @@
 package com.bread.web.user;
 
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-@RestController
+@RestController @AllArgsConstructor
 @RequestMapping("/user")
 public class UserController {
     private final UserService userService;
     private final UserRepository userRepository;
     private final  User user;
 
-    public UserController(UserService userService, UserRepository userRepository, User user) {
-        this.userService = userService;
-        this.userRepository = userRepository;
-        this.user = user;
-    }
+
 
     @PostMapping("/signIn")
     public ResponseEntity<User> signIn(@RequestBody User user) {

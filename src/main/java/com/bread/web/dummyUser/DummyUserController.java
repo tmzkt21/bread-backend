@@ -1,4 +1,4 @@
-package com.bread.web.dummy;
+package com.bread.web.dummyUser;
 
 import com.bread.web.user.User;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -5,9 +5,12 @@ import com.bread.web.utils.GenericService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
-interface ShippingService extends GenericService<Shipping> {}
+interface ShippingService extends GenericService<Shipping> {
+    void allUpdate(List<Shipping> shipping);
+}
 
 @Service
 @AllArgsConstructor
@@ -40,5 +43,10 @@ public class ShippingServiceImpl implements ShippingService{
 
     @Override
     public void delete(String id) {
+    }
+
+    @Override
+    public void allUpdate(List<Shipping> shipping) {
+        shippingRepository.saveAll(shipping);
     }
 }

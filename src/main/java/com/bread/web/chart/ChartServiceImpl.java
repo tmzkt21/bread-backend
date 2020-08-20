@@ -1,13 +1,17 @@
 package com.bread.web.chart;
 
+import com.bread.web.user.User;
 import com.bread.web.utils.GenericService;
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+
 
 import java.util.Optional;
 
+@Component
 interface ChartService extends GenericService<Chart> {
-
+    Long userTotalCount();
 }
 @Service
 @AllArgsConstructor
@@ -42,4 +46,11 @@ final private ChartRepository chartRepository;
     public void delete(String id) {
 
     }
+
+    @Override
+    public Long userTotalCount() {
+        return chartRepository.userTotal();
+    }
+
+
 }

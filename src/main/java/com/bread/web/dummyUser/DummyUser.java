@@ -1,8 +1,9 @@
-package com.bread.web.dummy;
+package com.bread.web.dummyUser;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 public class DummyUser {
 
@@ -58,6 +59,28 @@ public class DummyUser {
         Collections.shuffle(firstName);
         return lastName.get(0) + firstName.get(0) + firstName.get(1);
     }
+    // 구매량
+    public static String generateRandomSales() {
+        Random randomGenerator = new Random();
+        int start = 1;
+        int end = 100;
+        double range = end - start + 1;
+        int random = (int)(randomGenerator.nextDouble() * range + start);
+        String data = Integer.toString(random);
+//        String[] arr = {data,data,data,data,data,data,data,data};
+        return  data;
+    }
+    // 방문
+    public static String generateRandomVisit() {
+        Random randomGenerator = new Random();
+        int start = 1;
+        int end = 100;
+        double range = end - start + 1;
+        int random = (int)(randomGenerator.nextDouble() * range + start);
+        String data = Integer.toString(random);
+//        String[] arr = {data,data,data,data,data,data,data,data};
+        return  data;
+    }
 
     // 이메일
     public static String generateRandomEmailId() {
@@ -93,6 +116,8 @@ public class DummyUser {
     public static String generateRandomPhoneNo() {
         return (int)(Math.random() * 8999)+1000 +"";
     }
+
+
     public static void main(String[] args) {
         // 전화번호
         for (int i = 0; i < 10000; i++)

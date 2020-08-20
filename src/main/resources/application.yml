@@ -4,10 +4,10 @@ spring:
       suffix: .html
 
   jpa:
-    show-sql: true
+    show-sql: false
     database: mysql
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     generate-ddl: true
 
   datasource:
