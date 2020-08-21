@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 interface CustomUserRepository {
-
 }
 @Repository
 public class UserRepositoryImpl extends QuerydslRepositorySupport implements CustomUserRepository{

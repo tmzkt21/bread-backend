@@ -1,10 +1,8 @@
 package com.bread.web.shipping;
 
-import com.bread.web.user.UserRepository;
 import com.bread.web.utils.GenericService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 

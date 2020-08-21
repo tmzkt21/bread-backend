@@ -3,7 +3,9 @@ package com.bread.web.shipping;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 
-interface CustomShippingRepository{}
+interface CustomShippingRepository{
+
+}
 
 public class ShippingRepositoryImpl extends QuerydslRepositorySupport implements CustomShippingRepository {
   private final JPAQueryFactory jpaQueryFactory;

@@ -3,7 +3,10 @@ package com.bread.web.user;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -91,5 +94,13 @@ public class UserController {
     @PostMapping("/allUpdate")
     public void allUpdate(@RequestBody List<User> user){
         userService.allUpdate(user);
+    }
+
+    @GetMapping("/data/{name}")
+    public Map<String,Optional<User>> userChart(@PathVariable String name){
+        Map<String,Optional<User>> userSales = new HashMap<>();
+        userSales.put("판매량",userRepository.findByName(name));
+        System.out.println("회원차트들어옴"+userSales);
+    return userSales;
     }
 }

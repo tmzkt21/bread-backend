@@ -19,7 +19,7 @@ public class ChartController {
 
     @GetMapping("/total/user")
     public Map<String, Long> userTotalCount(){
-//        System.out.println("userTotal");
+        System.out.println("userTotal");
         Map<String,Long> userTotal = new HashMap<>();
         userTotal.put("total",chartService.userTotalCount());
         return userTotal;

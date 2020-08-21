@@ -59,6 +59,8 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByUserId(userId);
     }
 
+
+
     @Override
     public void allUpdate(List<User> user) {
         userRepository.saveAll(user);

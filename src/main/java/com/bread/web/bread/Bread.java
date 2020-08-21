@@ -31,9 +31,6 @@ public class Bread {
         this.option = option;
         this.allergy = allergy;
     }
-
     @OneToMany(mappedBy = "bread")
     private List<BreadOrder> breadOrders = new ArrayList<BreadOrder>();
-
-
 }
