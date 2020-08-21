@@ -18,9 +18,9 @@ public class QBread extends EntityPathBase<Bread> {
 
     private static final long serialVersionUID = -90504411L;
 
-    private static final PathInits INITS = PathInits.DIRECT2;
-
     public static final QBread bread = new QBread("bread");
+
+    public final StringPath allergy = createString("allergy");
 
     public final StringPath breadDescription = createString("breadDescription");
 
@@ -34,27 +34,18 @@ public class QBread extends EntityPathBase<Bread> {
 
     public final StringPath breadPrice = createString("breadPrice");
 
-    public final com.bread.web.category.QCategory category;
+    public final StringPath option = createString("option");
 
     public QBread(String variable) {
-        this(Bread.class, forVariable(variable), INITS);
+        super(Bread.class, forVariable(variable));
     }
 
     public QBread(Path<? extends Bread> path) {
-        this(path.getType(), path.getMetadata(), PathInits.getFor(path.getMetadata(), INITS));
+        super(path.getType(), path.getMetadata());
     }
 
     public QBread(PathMetadata metadata) {
-        this(metadata, PathInits.getFor(metadata, INITS));
-    }
-
-    public QBread(PathMetadata metadata, PathInits inits) {
-        this(Bread.class, metadata, inits);
-    }
-
-    public QBread(Class<? extends Bread> type, PathMetadata metadata, PathInits inits) {
-        super(type, metadata, inits);
-        this.category = inits.isInitialized("category") ? new com.bread.web.category.QCategory(forProperty("category")) : null;
+        super(Bread.class, metadata);
     }
 
 }

@@ -56,7 +56,7 @@ public class QBreadOrder extends EntityPathBase<BreadOrder> {
 
     public QBreadOrder(Class<? extends BreadOrder> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.bread = inits.isInitialized("bread") ? new com.bread.web.bread.QBread(forProperty("bread"), inits.get("bread")) : null;
+        this.bread = inits.isInitialized("bread") ? new com.bread.web.bread.QBread(forProperty("bread")) : null;
         this.shipping = inits.isInitialized("shipping") ? new com.bread.web.shipping.QShipping(forProperty("shipping"), inits.get("shipping")) : null;
         this.user = inits.isInitialized("user") ? new com.bread.web.user.QUser(forProperty("user")) : null;
     }
