@@ -32,13 +32,11 @@ public class QUser extends EntityPathBase<User> {
 
     public final StringPath phone = createString("phone");
 
-    public final StringPath sales = createString("sales");
+    public final NumberPath<Integer> sales = createNumber("sales", Integer.class);
 
     public final StringPath userId = createString("userId");
 
     public final NumberPath<Long> userNo = createNumber("userNo", Long.class);
-
-    public final StringPath visitor = createString("visitor");
 
     public QUser(String variable) {
         super(User.class, forVariable(variable));

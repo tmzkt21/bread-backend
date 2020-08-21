@@ -5,7 +5,6 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -81,8 +80,7 @@ public class UserServiceImpl implements UserService {
                         csvRecord.get(3),
                         csvRecord.get(4),
                         csvRecord.get(5),
-                        csvRecord.get(6),
-                        csvRecord.get(7)
+                        Integer.parseInt(csvRecord.get(6))
                         ));
             }
         } catch (Exception e) {

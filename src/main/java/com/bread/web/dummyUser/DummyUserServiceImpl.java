@@ -28,8 +28,8 @@ public class DummyUserServiceImpl implements DummyUserService{
             user.setName(DummyUser.generateRandomName());
             user.setEmail(DummyUser.generateRandomEmailId()+"@"+DummyUser.generateRandomEmail()+DummyUser.generateRandomEmailEnd());
             user.setPhone(DummyUser.generateRandomPhone()+DummyUser.generateRandomPhoneNo()+DummyUser.generateRandomPhoneNo());
-            user.setVisitor(DummyUser.generateRandomVisit()+','+DummyUser.generateRandomVisit()+','+DummyUser.generateRandomVisit()+','+DummyUser.generateRandomVisit()+','+DummyUser.generateRandomVisit()+','+DummyUser.generateRandomVisit()+','+DummyUser.generateRandomVisit()+','+DummyUser.generateRandomVisit());
             user.setSales(DummyUser.generateRandomSales()+','+DummyUser.generateRandomSales()+','+DummyUser.generateRandomSales()+','+DummyUser.generateRandomSales()+','+DummyUser.generateRandomSales()+','+DummyUser.generateRandomSales()+','+DummyUser.generateRandomSales()+','+DummyUser.generateRandomSales());
+//            user.setVisitor(DummyUser.generateRandomVisit()+','+DummyUser.generateRandomVisit()+','+DummyUser.generateRandomVisit()+','+DummyUser.generateRandomVisit()+','+DummyUser.generateRandomVisit()+','+DummyUser.generateRandomVisit()+','+DummyUser.generateRandomVisit()+','+DummyUser.generateRandomVisit());
             userList.add(user);
         }
         return userRepository.saveAll(userList);

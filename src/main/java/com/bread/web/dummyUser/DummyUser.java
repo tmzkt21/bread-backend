@@ -59,28 +59,28 @@ public class DummyUser {
         Collections.shuffle(firstName);
         return lastName.get(0) + firstName.get(0) + firstName.get(1);
     }
-    // 구매량
-    public static String generateRandomSales() {
+    // 판매량
+    public static int generateRandomSales() {
         Random randomGenerator = new Random();
         int start = 1;
         int end = 100;
         double range = end - start + 1;
         int random = (int)(randomGenerator.nextDouble() * range + start);
-        String data = Integer.toString(random);
+//        String data = Integer.toString(random);
 //        String[] arr = {data,data,data,data,data,data,data,data};
-        return  data;
+        return  random;
     }
     // 방문
-    public static String generateRandomVisit() {
-        Random randomGenerator = new Random();
-        int start = 1;
-        int end = 100;
-        double range = end - start + 1;
-        int random = (int)(randomGenerator.nextDouble() * range + start);
-        String data = Integer.toString(random);
-//        String[] arr = {data,data,data,data,data,data,data,data};
-        return  data;
-    }
+//    public static String generateRandomVisit() {
+//        Random randomGenerator = new Random();
+//        int start = 1;
+//        int end = 100;
+//        double range = end - start + 1;
+//        int random = (int)(randomGenerator.nextDouble() * range + start);
+//        String data = Integer.toString(random);
+////        String[] arr = {data,data,data,data,data,data,data,data};
+//        return  data;
+//    }
 
     // 이메일
     public static String generateRandomEmailId() {
