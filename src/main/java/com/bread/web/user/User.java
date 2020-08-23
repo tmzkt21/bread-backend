@@ -24,18 +24,16 @@ public class User {
     @Column(name = "name", nullable = false) private String name;
     @Column(name = "phone", nullable = false) private String phone;
     @Column(name = "email", nullable = false) private String email;
-    @Column(name = "sales", nullable = false) private int sales;
-//    @Column(name = "visitor", nullable = false) private String visitor;
+    @Column(name = "sales", nullable = false) private String sales;
 
     @Builder
-    public User(String userId, String password, String name, String phone, String email,int sales){
+    public User(String userId, String password, String name, String phone, String email,String sales){
         this.userId = userId;
         this.password = password;
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.sales = sales;
-//        this.visitor = visitor;
     }
 
     @OneToMany(mappedBy = "user")

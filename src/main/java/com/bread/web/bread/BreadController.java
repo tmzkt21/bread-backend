@@ -1,7 +1,5 @@
 package com.bread.web.bread;
 
-import com.bread.web.chart.Chart;
-import com.bread.web.user.User;
 import com.bread.web.utils.Box;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

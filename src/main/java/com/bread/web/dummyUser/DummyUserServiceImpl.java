@@ -29,7 +29,6 @@ public class DummyUserServiceImpl implements DummyUserService{
             user.setEmail(DummyUser.generateRandomEmailId()+"@"+DummyUser.generateRandomEmail()+DummyUser.generateRandomEmailEnd());
             user.setPhone(DummyUser.generateRandomPhone()+DummyUser.generateRandomPhoneNo()+DummyUser.generateRandomPhoneNo());
             user.setSales(DummyUser.generateRandomSales()+','+DummyUser.generateRandomSales()+','+DummyUser.generateRandomSales()+','+DummyUser.generateRandomSales()+','+DummyUser.generateRandomSales()+','+DummyUser.generateRandomSales()+','+DummyUser.generateRandomSales()+','+DummyUser.generateRandomSales());
-//            user.setVisitor(DummyUser.generateRandomVisit()+','+DummyUser.generateRandomVisit()+','+DummyUser.generateRandomVisit()+','+DummyUser.generateRandomVisit()+','+DummyUser.generateRandomVisit()+','+DummyUser.generateRandomVisit()+','+DummyUser.generateRandomVisit()+','+DummyUser.generateRandomVisit());
             userList.add(user);
         }
         return userRepository.saveAll(userList);

@@ -60,15 +60,19 @@ public class DummyUser {
         return lastName.get(0) + firstName.get(0) + firstName.get(1);
     }
     // 판매량
-    public static int generateRandomSales() {
+    public static String generateRandomSales() {
         Random randomGenerator = new Random();
         int start = 1;
-        int end = 100;
+        int end =  100;
         double range = end - start + 1;
         int random = (int)(randomGenerator.nextDouble() * range + start);
-//        String data = Integer.toString(random);
-//        String[] arr = {data,data,data,data,data,data,data,data};
-        return  random;
+        String data = Integer.toString(random);
+//        int []arr=new int[6];
+//        for(int a=0; a<6;a++){
+//            arr[a]=(random);
+//        }
+
+        return  data;
     }
     // 방문
 //    public static String generateRandomVisit() {

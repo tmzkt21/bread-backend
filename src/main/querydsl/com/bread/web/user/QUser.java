@@ -32,7 +32,7 @@ public class QUser extends EntityPathBase<User> {
 
     public final StringPath phone = createString("phone");
 
-    public final NumberPath<Integer> sales = createNumber("sales", Integer.class);
+    public final StringPath sales = createString("sales");
 
     public final StringPath userId = createString("userId");
 

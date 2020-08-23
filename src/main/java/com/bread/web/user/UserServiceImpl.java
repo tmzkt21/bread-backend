@@ -80,7 +80,7 @@ public class UserServiceImpl implements UserService {
                         csvRecord.get(3),
                         csvRecord.get(4),
                         csvRecord.get(5),
-                        Integer.parseInt(csvRecord.get(6))
+                        csvRecord.get(6)
                         ));
             }
         } catch (Exception e) {
