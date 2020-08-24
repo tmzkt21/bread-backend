@@ -8,14 +8,14 @@ import org.springframework.stereotype.Service;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 interface UserService extends GenericService<User> {
 
     Optional<User> findByUserId(String userId);
     void allUpdate(List<User> user);
     void readCsv();
+    Map<String,Integer> chartTest(String name);
 
 }
 
@@ -65,6 +65,8 @@ public class UserServiceImpl implements UserService {
         userRepository.saveAll(user);
     }
 
+
+
     @Override
     public void readCsv() {
         InputStream is = getClass().getResourceAsStream("/static/user.csv");
@@ -86,6 +88,22 @@ public class UserServiceImpl implements UserService {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public Map<String,Integer> chartTest(String name) {
+        Optional<User>  userResult = userRepository.findByName(name);
+        Map<String,Integer> mapResult = new TreeMap<>();
+        String[] result = userResult.toString()
+                .replace("Optional[","").replace("]","")
+                .split(",");
+        System.out.println(result.toString());
+        for(int i=0;i<= 7;i++){
+            mapResult.put("2020-0"+(i+1),Integer.parseInt(result[i]));
+            System.out.println(mapResult.toString());
+        }
+        return mapResult;
+
     }
 
 

@@ -97,10 +97,15 @@ public class UserController {
     }
 
     @GetMapping("/data/{name}")
-    public Map<String,Optional<User>> userChart(@PathVariable String name){
-        Map<String,Optional<User>> userSales = new HashMap<>();
-        userSales.put("판매량",userRepository.findByName(name));
-        System.out.println("회원차트들어옴"+userSales);
-    return userSales;
+    public Map<String,Integer> userChart(@PathVariable String name){
+     return userService.chartTest(name);
     }
+    //return userService.chartTest(name);;
+    //        Map<String,Optional<User>> userSales = new HashMap<>();
+//        userSales.put("salse",userRepository.findByName(name));
+//@GetMapping("/data/{name}")
+//public Optional<User> userChart(@PathVariable String name){
+//
+//    return userRepository.findByName(name);
+//}
 }
