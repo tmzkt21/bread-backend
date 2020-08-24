@@ -103,8 +103,5 @@ public class UserServiceImpl implements UserService {
             System.out.println(mapResult.toString());
         }
         return mapResult;
-
     }
-
-
 }
