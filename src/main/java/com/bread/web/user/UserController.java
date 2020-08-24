@@ -97,14 +97,11 @@ public class UserController {
 
     @GetMapping("/data/{name}")
     public Map<String,Integer> userChart(@PathVariable String name){
-     return userService.chartTest(name);
+     return userService.chartData(name);
     }
-    //return userService.chartTest(name);;
-    //        Map<String,Optional<User>> userSales = new HashMap<>();
-//        userSales.put("salse",userRepository.findByName(name));
-//@GetMapping("/data/{name}")
-//public Optional<User> userChart(@PathVariable String name){
-//
-//    return userRepository.findByName(name);
-//}
+
+//    @GetMapping("/sales/{sales}")
+//    public int salesAdd(@PathVariable int sales) {
+//       UserRepository.
+//    }
 }

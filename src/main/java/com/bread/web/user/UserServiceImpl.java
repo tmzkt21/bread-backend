@@ -15,7 +15,7 @@ interface UserService extends GenericService<User> {
     Optional<User> findByUserId(String userId);
     void allUpdate(List<User> user);
     void readCsv();
-    Map<String,Integer> chartTest(String name);
+    Map<String,Integer> chartData(String name);
 
 }
 
@@ -92,7 +92,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Map<String,Integer> chartTest(String name) {
+    public Map<String,Integer> chartData(String name) {
         Optional<User>  userResult = userRepository.findByName(name);
         Map<String,Integer> mapResult = new TreeMap<>();
         String[] result = userResult.toString()
@@ -104,5 +104,8 @@ public class UserServiceImpl implements UserService {
             System.out.println(mapResult.toString());
         }
         return mapResult;
+
     }
+
+
 }
