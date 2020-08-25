@@ -26,9 +26,10 @@ public class User {
     @Column(name = "email", nullable = false) private String email;
     @Column(name = "sales") private String sales;
     @Column(name = "addr") private String addr;
+    @Column(name = "detail_addr") private String detailAddr;
 
     @Builder
-    public User(String userId, String password, String name, String phone, String email,String sales,String addr){
+    public User(String userId, String password, String name, String phone, String email,String sales,String addr,String detailAddr){
         this.userId = userId;
         this.password = password;
         this.name = name;
@@ -36,6 +37,7 @@ public class User {
         this.email = email;
         this.sales = sales;
         this.addr = addr;
+        this.detailAddr = detailAddr;
     }
 
     @OneToMany(mappedBy = "user")
