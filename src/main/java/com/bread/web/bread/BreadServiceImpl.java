@@ -1,6 +1,5 @@
 package com.bread.web.bread;
 
-import com.bread.web.user.User;
 import com.bread.web.utils.GenericService;
 import lombok.AllArgsConstructor;
 import org.apache.commons.csv.CSVFormat;
