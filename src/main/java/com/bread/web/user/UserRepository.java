@@ -10,8 +10,7 @@ public interface UserRepository extends JpaRepository<User, Long>, CustomUserRep
 
     Optional<User> findByUserId(String userId);
 
-//    @Query("select u.visitor,u.sales FROM User u WHERE u.name LIKE %:name%")
-//    Optional<User> findByName(@Param("name") String name);
+
     @Query("select u.sales FROM User u WHERE u.name LIKE %:name%")
     Optional<User> findByName(@Param("name") String name);
 

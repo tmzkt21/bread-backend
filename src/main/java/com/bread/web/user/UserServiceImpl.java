@@ -16,6 +16,7 @@ interface UserService extends GenericService<User> {
     void allUpdate(List<User> user);
     void readCsv();
     Map<String,Integer> chartData(String name);
+    Optional<User> findUserByUserId(String userId);
 
 }
 
@@ -106,6 +107,12 @@ public class UserServiceImpl implements UserService {
         }
         return mapResult;
 
+    }
+
+    @Override
+    public Optional<User> findUserByUserId(String userId) {
+        Optional<User> idCheck = userRepository.findByUserId(userId);
+        return idCheck;
     }
 
 

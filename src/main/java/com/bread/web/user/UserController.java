@@ -25,7 +25,7 @@ public class UserController {
     @PostMapping("/signIn")
     public ResponseEntity<User> signIn(@RequestBody User user) {
         System.out.println(user);
-        Optional<User> findByUserId = userService.findByUserId(user.getUserId());
+        Optional<User> findByUserId = userService.findUserByUserId(user.getUserId());
         if (findByUserId.isPresent()) {
             User userLogin = findByUserId.get();
             if (user.getPassword().equals(userLogin.getPassword())) {
@@ -61,7 +61,7 @@ public class UserController {
     // 회원 정보 변경
     @PatchMapping("/changeInfo/{userId}")
     public ResponseEntity<User> changeInfo(@PathVariable String userId, @RequestBody User user){
-        Optional<User> updateUser = userService.findByUserId(user.getUserId());
+        Optional<User> updateUser = userService.findUserByUserId(user.getUserId());
         if (updateUser.isPresent()){
             updateUser.ifPresent(selectUser ->{
                 selectUser.setName(user.getName());
@@ -69,6 +69,8 @@ public class UserController {
                 selectUser.setPassword(user.getPassword());
                 selectUser.setEmail(user.getEmail());
                 selectUser.setPhone(user.getPhone());
+                selectUser.setAddr(user.getAddr());
+                selectUser.setDetailAddr(user.getDetailAddr());
                 userRepository.save(selectUser);
             });
             return ResponseEntity.ok(updateUser.get());
@@ -90,6 +92,31 @@ public class UserController {
         return userCancle;
     }
 
+//    //회원정보 변경
+//    @PatchMapping("/modify/{userId}")
+//    public ResponseEntity<User> modify(@PathVariable String userId, @RequestBody User user) {
+//
+//        Optional<User> modifyUser = userService.findUserByUserId(user.getUserId());
+//
+//        if(modifyUser.isPresent()){
+//            modifyUser.ifPresent(selectUser ->{
+//                selectUser.setName(user.getName());
+//                selectUser.setPhone(user.getPhone());
+//                selectUser.setEmail(user.getEmail());
+//                selectUser.setPassword(user.getPassword());
+//                selectUser.setAddr(user.getAddr());
+//                selectUser.setDetailAddr(user.getDetailAddr());
+//                userRepository.save(selectUser);
+//            });
+//            return ResponseEntity.ok(modifyUser.get());
+//        } else {
+//            System.out.println("업데이트 실패");
+//
+//            return ResponseEntity.notFound().build();
+//        }
+//
+//    }
+
     @PostMapping("/allUpdate")
     public void allUpdate(@RequestBody List<User> user){
         userService.allUpdate(user);
@@ -100,8 +127,5 @@ public class UserController {
      return userService.chartData(name);
     }
 
-//    @GetMapping("/sales/{sales}")
-//    public int salesAdd(@PathVariable int sales) {
-//       UserRepository.
-//    }
+
 }
