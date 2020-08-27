@@ -25,7 +25,7 @@ public class UserController {
     @PostMapping("/signIn")
     public ResponseEntity<User> signIn(@RequestBody User user) {
         System.out.println(user);
-        Optional<User> findByUserId = userService.findUserByUserId(user.getUserId());
+        Optional<User> findByUserId = userService.findByUserId(user.getUserId());
         if (findByUserId.isPresent()) {
             User userLogin = findByUserId.get();
             if (user.getPassword().equals(userLogin.getPassword())) {
@@ -80,7 +80,6 @@ public class UserController {
             return ResponseEntity.notFound().build();
         }
     }
-
     // 회원삭제
     @PostMapping("/delete")
     public Optional<User> userDelete(@RequestBody User user){
@@ -91,37 +90,10 @@ public class UserController {
         });
         return userCancle;
     }
-
-//    //회원정보 변경
-//    @PatchMapping("/modify/{userId}")
-//    public ResponseEntity<User> modify(@PathVariable String userId, @RequestBody User user) {
-//
-//        Optional<User> modifyUser = userService.findUserByUserId(user.getUserId());
-//
-//        if(modifyUser.isPresent()){
-//            modifyUser.ifPresent(selectUser ->{
-//                selectUser.setName(user.getName());
-//                selectUser.setPhone(user.getPhone());
-//                selectUser.setEmail(user.getEmail());
-//                selectUser.setPassword(user.getPassword());
-//                selectUser.setAddr(user.getAddr());
-//                selectUser.setDetailAddr(user.getDetailAddr());
-//                userRepository.save(selectUser);
-//            });
-//            return ResponseEntity.ok(modifyUser.get());
-//        } else {
-//            System.out.println("업데이트 실패");
-//
-//            return ResponseEntity.notFound().build();
-//        }
-//
-//    }
-
     @PostMapping("/allUpdate")
     public void allUpdate(@RequestBody List<User> user){
         userService.allUpdate(user);
     }
-
     @GetMapping("/data/{name}")
     public Map<String,Integer> userChart(@PathVariable String name){
      return userService.chartData(name);

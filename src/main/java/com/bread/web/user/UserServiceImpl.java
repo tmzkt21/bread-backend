@@ -11,13 +11,11 @@ import java.io.InputStreamReader;
 import java.util.*;
 
 interface UserService extends GenericService<User> {
-
     Optional<User> findByUserId(String userId);
     void allUpdate(List<User> user);
     void readCsv();
     Map<String,Integer> chartData(String name);
     Optional<User> findUserByUserId(String userId);
-
 }
 
 @Service @AllArgsConstructor

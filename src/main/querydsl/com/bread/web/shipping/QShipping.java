@@ -24,6 +24,8 @@ public class QShipping extends EntityPathBase<Shipping> {
 
     public final com.bread.web.order.QBreadOrder breadOrder;
 
+    public final StringPath shippingBreadName = createString("shippingBreadName");
+
     public final StringPath shippingDate = createString("shippingDate");
 
     public final NumberPath<Long> shippingId = createNumber("shippingId", Long.class);
