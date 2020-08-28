@@ -17,13 +17,17 @@ public class Shipping {
     @Column(name = "shipping_name", nullable = false) private String shippingName;
     @Column(name = "shipping_status", nullable = false) private String shippingStatus;
     @Column(name = "shipping_bread_name", nullable = false) private String shippingBreadName;
+    @Column(name = "shipping_price", nullable = false) private String shippingPrice;
+    @Column(name = "shippin_addr", nullable = false) private String shippingAddr;
 
     @Builder
-    public Shipping(String shippingDate,String shippingName,String shippingStatus,String shippingBreadName) {
+    public Shipping(String shippingDate,String shippingName,String shippingStatus,String shippingBreadName,String shippingPrice,String shippingAddr) {
         this.shippingDate =shippingDate;
         this.shippingName = shippingName;
         this.shippingStatus = shippingStatus;
         this.shippingBreadName = shippingBreadName;
+        this.shippingPrice = shippingPrice;
+        this.shippingAddr = shippingAddr;
     }
 
     @OneToOne
