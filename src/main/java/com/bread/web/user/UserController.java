@@ -90,10 +90,12 @@ public class UserController {
         });
         return userCancle;
     }
+    // 회원 정보 수정
     @PostMapping("/allUpdate")
     public void allUpdate(@RequestBody List<User> user){
         userService.allUpdate(user);
     }
+
     @GetMapping("/data/{name}")
     public Map<String,Integer> userChart(@PathVariable String name){
      return userService.chartData(name);

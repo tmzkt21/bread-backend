@@ -1,5 +1,6 @@
 package com.bread.web.shipping;
 
+import com.bread.web.user.User;
 import com.bread.web.utils.GenericService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -8,6 +9,7 @@ import java.util.Optional;
 
 interface ShippingService extends GenericService<Shipping> {
     void allUpdate(List<Shipping> shipping);
+    Optional<Shipping> findByShippingName(String shippingName);
 }
 
 @Service
@@ -46,5 +48,10 @@ public class ShippingServiceImpl implements ShippingService{
     @Override
     public void allUpdate(List<Shipping> shipping) {
         shippingRepository.saveAll(shipping);
+    }
+
+    @Override
+    public Optional<Shipping> findByShippingName(String shippingName) {
+        return shippingRepository.findByShippingName(shippingName);
     }
 }

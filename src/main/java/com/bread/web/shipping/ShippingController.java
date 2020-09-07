@@ -2,6 +2,7 @@ package com.bread.web.shipping;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.Optional;
 
 
 @CrossOrigin(origins = "*",allowedHeaders = "*")
@@ -13,9 +14,14 @@ public class ShippingController {
 
     @PostMapping("/payment")
     public String register(@RequestBody Shipping shipping) {
-        System.out.println("배송데이터값"+shipping);
         shippingRepository.save(shipping);
         return "배송 데이터 저장완료";
+    }
+    @GetMapping("/{shippingName}")
+    public Optional<Shipping> findUser(@PathVariable String shippingName) {
+        Optional<Shipping> shipping = shippingService.findByShippingName(shippingName);
+        System.out.println("주문자 정보"+shipping);
+        return shipping;
     }
 
     // 리스트로 전부찾기
