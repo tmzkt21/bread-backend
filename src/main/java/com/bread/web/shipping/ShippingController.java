@@ -18,8 +18,8 @@ public class ShippingController {
         return "배송 데이터 저장완료";
     }
     @GetMapping("/{shippingName}")
-    public Optional<Shipping> findUser(@PathVariable String shippingName) {
-        Optional<Shipping> shipping = shippingService.findByShippingName(shippingName);
+    public List<Shipping> findUser(@PathVariable String shippingName) {
+        List<Shipping> shipping = shippingService.findByShippingName(shippingName);
         System.out.println("주문자 정보"+shipping);
         return shipping;
     }

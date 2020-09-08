@@ -26,6 +26,8 @@ public class QShipping extends EntityPathBase<Shipping> {
 
     public final StringPath shippingAddr = createString("shippingAddr");
 
+    public final StringPath shippingBreadImg = createString("shippingBreadImg");
+
     public final StringPath shippingBreadName = createString("shippingBreadName");
 
     public final StringPath shippingDate = createString("shippingDate");
