@@ -16,6 +16,8 @@ interface UserService extends GenericService<User> {
     void readCsv();
     Map<String,Integer> chartData(String name);
     Optional<User> findUserByUserId(String userId);
+    Optional<User> findAllByNameAndPhone(String name ,String phone);
+    Optional<User> findAllByUserIdAndNameAndPhone(String name ,String phone,String userId);
 }
 
 @Service @AllArgsConstructor
@@ -111,6 +113,16 @@ public class UserServiceImpl implements UserService {
     public Optional<User> findUserByUserId(String userId) {
         Optional<User> idCheck = userRepository.findByUserId(userId);
         return idCheck;
+    }
+
+    @Override
+    public Optional<User> findAllByNameAndPhone(String name, String phone) {
+        return userRepository.findAllByNameAndPhone(name, phone);
+    }
+
+    @Override
+    public Optional<User> findAllByUserIdAndNameAndPhone(String name, String phone, String userId) {
+        return userRepository.findAllByUserIdAndNameAndPhone(name,phone,userId);
     }
 
 

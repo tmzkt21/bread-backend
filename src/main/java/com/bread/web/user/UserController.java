@@ -3,7 +3,6 @@ package com.bread.web.user;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -43,13 +42,6 @@ public class UserController {
     public String register(@RequestBody User user) {
         userRepository.save(user);
         return "님의 회원가입을 축하합니다";
-    }
-
-    // read 회원검색
-    @GetMapping("/findUser")
-    public User findUser(@RequestBody Long id) {
-        Optional<User> user = userRepository.findById(id);
-        return user.get();
     }
 
     // 회원목록 출력
@@ -95,11 +87,37 @@ public class UserController {
     public void allUpdate(@RequestBody List<User> user){
         userService.allUpdate(user);
     }
-
+    // 유저 차트 데이터
     @GetMapping("/data/{name}")
     public Map<String,Integer> userChart(@PathVariable String name){
      return userService.chartData(name);
     }
-
+    //아이디 찾기
+    @GetMapping("/findId")
+    public ResponseEntity<User> findId(@RequestParam String name, String phone) {
+        System.out.println(name);
+        System.out.println(phone);
+        Optional<User> findId = userService.findAllByNameAndPhone(name,phone);
+        System.out.println(findId);
+        if(findId.isPresent()) {
+            return ResponseEntity.ok(findId.get());
+        } else {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+    //비밀번호 찾기
+    @GetMapping("/findPw")
+    public ResponseEntity<User> findPw(@RequestParam String userId, String name, String phone) {
+        System.out.println(name);
+        System.out.println(phone);
+        System.out.println(userId);
+        Optional<User> findPw = userService.findAllByUserIdAndNameAndPhone(userId,name,phone);
+        System.out.println(findPw);
+        if(findPw.isPresent()) {
+            return ResponseEntity.ok(findPw.get());
+        } else {
+            return ResponseEntity.badRequest().build();
+        }
+    }
 
 }
