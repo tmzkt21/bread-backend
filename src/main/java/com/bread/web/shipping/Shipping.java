@@ -1,6 +1,5 @@
 package com.bread.web.shipping;
 
-import com.bread.web.order.BreadOrder;
 import lombok.*;
 
 import javax.persistence.*;
@@ -32,7 +31,5 @@ public class Shipping {
         this.shippingBreadImg = shippingBreadImg;
     }
 
-    @OneToOne
-    @JoinColumn(name = "order_id")
-    private BreadOrder breadOrder;
+
 }

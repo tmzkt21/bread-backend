@@ -7,7 +7,6 @@ import com.querydsl.core.types.dsl.*;
 import com.querydsl.core.types.PathMetadata;
 import javax.annotation.Generated;
 import com.querydsl.core.types.Path;
-import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
@@ -20,8 +19,6 @@ public class QBread extends EntityPathBase<Bread> {
 
     public static final QBread bread = new QBread("bread");
 
-    public final StringPath allergy = createString("allergy");
-
     public final StringPath breadDescription = createString("breadDescription");
 
     public final NumberPath<Long> breadId = createNumber("breadId", Long.class);
@@ -32,11 +29,7 @@ public class QBread extends EntityPathBase<Bread> {
 
     public final StringPath breadName = createString("breadName");
 
-    public final ListPath<com.bread.web.order.BreadOrder, com.bread.web.order.QBreadOrder> breadOrders = this.<com.bread.web.order.BreadOrder, com.bread.web.order.QBreadOrder>createList("breadOrders", com.bread.web.order.BreadOrder.class, com.bread.web.order.QBreadOrder.class, PathInits.DIRECT2);
-
     public final StringPath breadPrice = createString("breadPrice");
-
-    public final StringPath option = createString("option");
 
     public QBread(String variable) {
         super(Bread.class, forVariable(variable));

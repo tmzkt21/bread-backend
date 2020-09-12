@@ -1,6 +1,5 @@
 package com.bread.web.user;
 
-import com.bread.web.order.BreadOrder;
 import lombok.*;
 import org.springframework.stereotype.Component;
 
@@ -40,9 +39,5 @@ public class User {
         this.detailAddr = detailAddr;
     }
 
-    @OneToMany(mappedBy = "user")
-    private List<BreadOrder> breadOrders = new ArrayList<BreadOrder>();
 
-    @OneToMany(mappedBy = "user")
-    private List<BreadOrder> breadOrder = new ArrayList<BreadOrder>();
 }

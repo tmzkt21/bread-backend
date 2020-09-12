@@ -1,5 +1,4 @@
 package com.bread.web.bread;
-import com.bread.web.order.BreadOrder;
 import lombok.*;
 
 import javax.persistence.*;
@@ -19,20 +18,15 @@ public class Bread {
     @Column(name = "bread_image", nullable = false) private String breadImage;
     @Column(name = "bread_price", nullable = false) private String breadPrice;
     @Column(name = "bread_description", nullable = false) private String breadDescription;
-    @Column(name = "option", nullable = false) private String option;
-    @Column(name = "allergy", nullable = false) private String allergy;
     @Column(name = "bread_image_detail", nullable = false) private String breadImageDetail;
 
     @Builder
-    public Bread(String breadName,String breadImage,String breadPrice,String breadDescription,String option,String allergy,String breadImageDetail) {
+    public Bread(String breadName,String breadImage,String breadPrice,String breadDescription,String breadImageDetail) {
         this.breadName = breadName;
         this.breadImage = breadImage;
         this.breadPrice = breadPrice;
         this.breadDescription = breadDescription;
-        this.option = option;
-        this.allergy = allergy;
         this.breadImageDetail = breadImageDetail;
     }
-    @OneToMany(mappedBy = "bread")
-    private List<BreadOrder> breadOrders = new ArrayList<BreadOrder>();
+
 }
