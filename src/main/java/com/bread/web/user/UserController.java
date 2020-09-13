@@ -20,10 +20,9 @@ public class UserController {
         userService.readCsv();
     }
 
-
+    // 로그인
     @PostMapping("/signIn")
     public ResponseEntity<User> signIn(@RequestBody User user) {
-        System.out.println(user);
         Optional<User> findByUserId = userService.findByUserId(user.getUserId());
         if (findByUserId.isPresent()) {
             User userLogin = findByUserId.get();

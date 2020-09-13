@@ -19,6 +19,8 @@ public class QBread extends EntityPathBase<Bread> {
 
     public static final QBread bread = new QBread("bread");
 
+    public final StringPath allergy = createString("allergy");
+
     public final StringPath breadDescription = createString("breadDescription");
 
     public final NumberPath<Long> breadId = createNumber("breadId", Long.class);
@@ -30,6 +32,8 @@ public class QBread extends EntityPathBase<Bread> {
     public final StringPath breadName = createString("breadName");
 
     public final StringPath breadPrice = createString("breadPrice");
+
+    public final StringPath option = createString("option");
 
     public QBread(String variable) {
         super(Bread.class, forVariable(variable));

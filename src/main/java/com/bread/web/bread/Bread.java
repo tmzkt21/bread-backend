@@ -19,14 +19,19 @@ public class Bread {
     @Column(name = "bread_price", nullable = false) private String breadPrice;
     @Column(name = "bread_description", nullable = false) private String breadDescription;
     @Column(name = "bread_image_detail", nullable = false) private String breadImageDetail;
+    @Column(name = "option", nullable = false) private String option;
+    @Column(name = "allergy", nullable = false) private String allergy;
 
     @Builder
-    public Bread(String breadName,String breadImage,String breadPrice,String breadDescription,String breadImageDetail) {
+    public Bread(String breadName,String breadImage,String breadPrice,String breadDescription,String breadImageDetail
+    ,String option,String allergy) {
         this.breadName = breadName;
         this.breadImage = breadImage;
         this.breadPrice = breadPrice;
         this.breadDescription = breadDescription;
         this.breadImageDetail = breadImageDetail;
+        this.option = option;
+        this.allergy = allergy;
     }
 
 }
