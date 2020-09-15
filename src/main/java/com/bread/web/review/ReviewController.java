@@ -15,13 +15,14 @@ import java.util.Optional;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/review")
+
 public class ReviewController {
     private final ReviewService reviewService;
     private final ReviewRepository reviewRepository;
     @Autowired Box box;
 
     @PostMapping("/save")
-    public String Review(@RequestBody Review review){
+    public String reviewSave(@RequestBody Review review){
         reviewRepository.save(review);
         return "리뷰 저장완료";
     }
@@ -43,8 +44,15 @@ public class ReviewController {
             return ResponseEntity.notFound().build();
         }
     }
+    // 리뷰 리스트
     @GetMapping("/postlist")
-    public List<Review> ReviewList() {
+    public List<Review> reviewList() {
         return reviewRepository.findAll();
     }
+    // 카테고리 리스트
+//    @GetMapping("/categoly")
+//    public Optional<Review> categolyList(@RequestBody Review review) {
+//        System.out.println(reviewRepository.findByCategory(review.getCategory()));
+//        return reviewRepository.findByCategory(review.getCategory());
+//    }
 }

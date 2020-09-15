@@ -6,4 +6,5 @@ import java.util.Optional;
 
 public interface ReviewRepository extends JpaRepository<Review,Long>, CustomReviewRepository {
     Optional<Review> findByDate(String date);
+    Optional<Review> findByCategory(String categoly);
 }
