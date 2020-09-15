@@ -87,10 +87,12 @@ public class UserController {
         userService.allUpdate(user);
     }
     // 유저 차트 데이터
+
     @GetMapping("/data/{name}")
     public Map<String,Integer> userChart(@PathVariable String name){
      return userService.chartData(name);
     }
+
     //아이디 찾기
     @GetMapping("/findId")
     public ResponseEntity<User> findId(@RequestParam String name, String phone) {

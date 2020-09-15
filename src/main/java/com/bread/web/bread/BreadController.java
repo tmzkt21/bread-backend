@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @CrossOrigin(origins = "*",allowedHeaders = "*")
 @RestController @AllArgsConstructor
@@ -50,5 +51,11 @@ public class BreadController {
     public List<Bread> findAll(){
         return breadRepository.findAll();
     }
+
+    @GetMapping("/breadSearch/{breadName}")
+    public List<Bread> searchByWord(@PathVariable String breadName) {
+        return breadService.findByBreadName(breadName);
+    }
+
 
 }
