@@ -1,12 +1,15 @@
 package com.bread.web.review;
 
 
+import com.bread.web.user.User;
 import com.bread.web.utils.Box;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin(origins = "*",allowedHeaders = "*")
 @RestController
@@ -17,12 +20,30 @@ public class ReviewController {
     private final ReviewRepository reviewRepository;
     @Autowired Box box;
 
-    @PostMapping("/posts/notice/create")
+    @PostMapping("/save")
     public String Review(@RequestBody Review review){
         reviewRepository.save(review);
         return "리뷰 저장완료";
     }
-    @GetMapping("/posts/postlist")
+    // 리뷰 정보 변경
+    @PatchMapping("/info")
+    public ResponseEntity<Review> reviewInfo(@RequestBody Review review){
+        Optional<Review> updateReview = reviewService.findReviewByDate(review.getDate());
+        if (updateReview.isPresent()){
+            updateReview.ifPresent(selectReview ->{
+                selectReview.setTitle(review.getTitle());
+                selectReview.setContents(review.getContents());
+                selectReview.setCategory(review.getCategory());
+                reviewRepository.save(selectReview);
+            });
+            return ResponseEntity.ok(updateReview.get());
+        } else {
+            System.out.println("정보수정 실패 재시도 바랍니다");
+
+            return ResponseEntity.notFound().build();
+        }
+    }
+    @GetMapping("/postlist")
     public List<Review> ReviewList() {
         return reviewRepository.findAll();
     }

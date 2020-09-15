@@ -1,12 +1,15 @@
 package com.bread.web.review;
+import com.bread.web.user.User;
 import com.bread.web.utils.GenericService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 interface ReviewService extends GenericService<Review> {
-
+    void allUpdate(List<Review> review);
+    Optional<Review> findReviewByDate(String date);
 
 }
 @Service
@@ -40,5 +43,15 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Override
     public void delete(String id) {
+    }
+
+    @Override
+    public void allUpdate(List<Review> review) {
+        reviewRepository.saveAll(review);
+    }
+
+    @Override
+    public Optional<Review> findReviewByDate(String date) {
+        return reviewRepository.findByDate(date);
     }
 }
