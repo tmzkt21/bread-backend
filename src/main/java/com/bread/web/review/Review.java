@@ -19,13 +19,15 @@ public class Review {
     @Column(name = "category", nullable = false) private String category;
     @Column(name = "post_title", nullable = false) private String postTitle;
     @Column(name = "contents", nullable = false) private String contents;
+    @Column(name = "date", nullable = false) private String date;
 
     @Builder
-    public Review(String userId,String category,String postTitle,String contents){
+    public Review(String userId,String category,String postTitle,String contents,String date){
     this.userId = userId;
     this.category = category;
     this.postTitle = postTitle;
     this.contents = contents;
+    this.date = date;
 
     }
 }
