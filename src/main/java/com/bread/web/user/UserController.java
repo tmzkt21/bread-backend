@@ -75,7 +75,6 @@ public class UserController {
     @PostMapping("/delete")
     public Optional<User> userDelete(@RequestBody User user){
         Optional<User> userCancle = userRepository.findByUserId(user.getUserId());
-        System.out.println(userCancle);
         userCancle.ifPresent(selectUser ->{
             userRepository.delete(selectUser);
         });

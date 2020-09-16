@@ -50,9 +50,20 @@ public class ReviewController {
         return reviewRepository.findAll();
     }
 
+    // 제목으로 리뷰검색
     @GetMapping("/title/{title}")
     public List<Review> titleSearch(@PathVariable String title) {
         return reviewService.findByTitle(title);
+    }
+
+    // 리뷰삭제
+    @PostMapping("/delete")
+    public Optional<Review> reviewDelete(@RequestBody Review review) {
+        Optional<Review> delete = reviewRepository.findByDate(review.getDate());
+        delete.ifPresent(selectReview -> {
+            reviewRepository.delete(selectReview);
+        });
+        return delete;
     }
 
 }
