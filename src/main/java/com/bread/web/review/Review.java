@@ -14,7 +14,7 @@ public class Review {
     @Column(name = "user_id", nullable = false) private String userId;
     @Column(name = "category",nullable = false) private String category;
     @Column(name = "title", nullable = false) private String title;
-    @Column(name = "contents", nullable = false,length = 100000) private String contents;
+    @Column(name = "contents", nullable = false,length = 1000) private String contents;
     @Column(name = "date", nullable = false) private String date;
 
     @Builder
