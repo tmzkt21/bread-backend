@@ -11,13 +11,8 @@ import java.io.InputStreamReader;
 import java.util.*;
 
 interface UserService extends GenericService<User> {
-    Optional<User> findByUserId(String userId);
-    void allUpdate(List<User> user);
     void readCsv();
     Map<String,Integer> chartData(String name);
-    Optional<User> findUserByUserId(String userId);
-    Optional<User> findAllByNameAndPhone(String name ,String phone);
-    Optional<User> findAllByUserIdAndNameAndPhone(String name ,String phone,String userId);
 }
 
 @Service @AllArgsConstructor
@@ -53,20 +48,6 @@ public class UserServiceImpl implements UserService {
     public boolean exists(String id) {
         return false;
     }
-
-    @Override
-    public Optional<User> findByUserId(String userId) {
-        return userRepository.findByUserId(userId);
-    }
-
-
-
-    @Override
-    public void allUpdate(List<User> user) {
-        userRepository.saveAll(user);
-    }
-
-
 
     @Override
     public void readCsv() {
@@ -108,22 +89,4 @@ public class UserServiceImpl implements UserService {
         return mapResult;
 
     }
-
-    @Override
-    public Optional<User> findUserByUserId(String userId) {
-        Optional<User> idCheck = userRepository.findByUserId(userId);
-        return idCheck;
-    }
-
-    @Override
-    public Optional<User> findAllByNameAndPhone(String name, String phone) {
-        return userRepository.findAllByNameAndPhone(name, phone);
-    }
-
-    @Override
-    public Optional<User> findAllByUserIdAndNameAndPhone(String name, String phone, String userId) {
-        return userRepository.findAllByUserIdAndNameAndPhone(name,phone,userId);
-    }
-
-
 }

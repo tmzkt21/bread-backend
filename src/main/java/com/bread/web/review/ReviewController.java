@@ -1,7 +1,6 @@
 package com.bread.web.review;
 
 
-import com.bread.web.user.User;
 import com.bread.web.utils.Box;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,12 +28,13 @@ public class ReviewController {
     // 리뷰 정보 변경
     @PatchMapping("/info")
     public ResponseEntity<Review> reviewInfo(@RequestBody Review review){
-        Optional<Review> updateReview = reviewService.findReviewByDate(review.getDate());
+        Optional<Review> updateReview = reviewRepository.findByReviewId(review.getReviewId());
         if (updateReview.isPresent()){
             updateReview.ifPresent(selectReview ->{
                 selectReview.setTitle(review.getTitle());
                 selectReview.setContents(review.getContents());
                 selectReview.setCategory(review.getCategory());
+                selectReview.setDate(review.getDate());
                 reviewRepository.save(selectReview);
             });
             return ResponseEntity.ok(updateReview.get());
@@ -53,13 +53,13 @@ public class ReviewController {
     // 제목으로 리뷰검색
     @GetMapping("/title/{title}")
     public List<Review> titleSearch(@PathVariable String title) {
-        return reviewService.findByTitle(title);
+        return reviewRepository.findByTitle(title);
     }
 
     // 리뷰삭제
     @PostMapping("/delete")
     public Optional<Review> reviewDelete(@RequestBody Review review) {
-        Optional<Review> delete = reviewRepository.findByDate(review.getDate());
+        Optional<Review> delete = reviewRepository.findByReviewId(review.getReviewId());
         delete.ifPresent(selectReview -> {
             reviewRepository.delete(selectReview);
         });

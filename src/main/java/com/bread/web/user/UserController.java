@@ -23,7 +23,7 @@ public class UserController {
     // 로그인
     @PostMapping("/signIn")
     public ResponseEntity<User> signIn(@RequestBody User user) {
-        Optional<User> findByUserId = userService.findByUserId(user.getUserId());
+        Optional<User> findByUserId = userRepository.findByUserId(user.getUserId());
         if (findByUserId.isPresent()) {
             User userLogin = findByUserId.get();
             if (user.getPassword().equals(userLogin.getPassword())) {
@@ -51,8 +51,8 @@ public class UserController {
 
     // 회원 정보 변경
     @PatchMapping("/changeInfo/{userId}")
-    public ResponseEntity<User> changeInfo(@PathVariable String userId, @RequestBody User user){
-        Optional<User> updateUser = userService.findUserByUserId(user.getUserId());
+    public ResponseEntity<User> changeInfo( @RequestBody User user){
+        Optional<User> updateUser = userRepository.findByUserId(user.getUserId());
         if (updateUser.isPresent()){
             updateUser.ifPresent(selectUser ->{
                 selectUser.setName(user.getName());
@@ -83,7 +83,7 @@ public class UserController {
     // 회원 정보 수정
     @PostMapping("/allUpdate")
     public void allUpdate(@RequestBody List<User> user){
-        userService.allUpdate(user);
+        userRepository.saveAll(user);
     }
     // 유저 차트 데이터
 
@@ -95,9 +95,7 @@ public class UserController {
     //아이디 찾기
     @GetMapping("/findId")
     public ResponseEntity<User> findId(@RequestParam String name, String phone) {
-        System.out.println(name);
-        System.out.println(phone);
-        Optional<User> findId = userService.findAllByNameAndPhone(name,phone);
+        Optional<User> findId = userRepository.findAllByNameAndPhone(name,phone);
         System.out.println(findId);
         if(findId.isPresent()) {
             return ResponseEntity.ok(findId.get());
@@ -111,7 +109,7 @@ public class UserController {
         System.out.println(name);
         System.out.println(phone);
         System.out.println(userId);
-        Optional<User> findPw = userService.findAllByUserIdAndNameAndPhone(userId,name,phone);
+        Optional<User> findPw = userRepository.findAllByUserIdAndNameAndPhone(userId,name,phone);
         System.out.println(findPw);
         if(findPw.isPresent()) {
             return ResponseEntity.ok(findPw.get());

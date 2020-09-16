@@ -5,21 +5,14 @@ import lombok.AllArgsConstructor;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
-
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.List;
 import java.util.Optional;
 
 interface BreadService extends GenericService<Bread> {
-
-    void allUpdate(List<Bread> user);
     void readCsv();
-    List<Bread> findByBreadName(String breadName);
 }
 @Service @AllArgsConstructor
 public class BreadServiceImpl implements BreadService {
@@ -54,10 +47,6 @@ private final BreadRepository breadRepository;
 
     }
 
-    @Override
-    public void allUpdate(List<Bread> bread) {
-        breadRepository.saveAll(bread);
-    }
 
     @Override
     public void readCsv() {
@@ -83,8 +72,5 @@ private final BreadRepository breadRepository;
         }
     }
 
-    @Override
-    public List<Bread> findByBreadName(String breadName) {
-        return breadRepository.findByBreadName(breadName);
-    }
+
 }

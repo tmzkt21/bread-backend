@@ -4,10 +4,8 @@ import com.bread.web.utils.Box;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 @CrossOrigin(origins = "*",allowedHeaders = "*")
 @RestController @AllArgsConstructor
@@ -23,7 +21,7 @@ public class BreadController {
     @GetMapping("/data")
     public Map<?,?> hospitalData(){
         System.out.println("들어옴");
-        Iterable<Bread> data = breadService.findAll();
+        Iterable<Bread> data = breadRepository.findAll();
         box.put("list", data);
         System.out.println(box.get());
         return box.get();
@@ -33,7 +31,7 @@ public class BreadController {
     @GetMapping("/list/{page}/{category}/{search}")
     public Iterable<Bread> breadList(@PathVariable String page,String category,String search) {
         System.out.println("자바들어옴");
-        Iterable<Bread> breadList = breadService.findAll();
+        Iterable<Bread> breadList = breadRepository.findAll();
         return breadList;
     }
     @PostMapping("/product")
@@ -43,7 +41,7 @@ public class BreadController {
     }
     @PostMapping("/allUpdate")
     public void allUpdate(@RequestBody List<Bread> bread){
-        breadService.allUpdate(bread);
+        breadRepository.saveAll(bread);
     }
 
     // 빵리스트 출력
@@ -54,7 +52,7 @@ public class BreadController {
 
     @GetMapping("/breadSearch/{breadName}")
     public List<Bread> searchByWord(@PathVariable String breadName) {
-        return breadService.findByBreadName(breadName);
+        return breadRepository.findByBreadName(breadName);
     }
 
 
