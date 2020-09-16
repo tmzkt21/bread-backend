@@ -10,6 +10,7 @@ import java.util.Optional;
 interface ReviewService extends GenericService<Review> {
     void allUpdate(List<Review> review);
     Optional<Review> findReviewByDate(String date);
+    List<Review> findByTitle(String title);
 
 }
 @Service
@@ -53,5 +54,10 @@ public class ReviewServiceImpl implements ReviewService {
     @Override
     public Optional<Review> findReviewByDate(String date) {
         return reviewRepository.findByDate(date);
+    }
+
+    @Override
+    public List<Review> findByTitle(String title) {
+        return reviewRepository.findByTitle(title);
     }
 }

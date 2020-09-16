@@ -1,10 +1,6 @@
 package com.bread.web.review;
-
-
 import lombok.*;
-
 import javax.persistence.*;
-
 @Entity
 @Getter
 @Setter

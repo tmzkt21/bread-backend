@@ -49,10 +49,10 @@ public class ReviewController {
     public List<Review> reviewList() {
         return reviewRepository.findAll();
     }
-    // 카테고리 리스트
-//    @GetMapping("/categoly")
-//    public Optional<Review> categolyList(@RequestBody Review review) {
-//        System.out.println(reviewRepository.findByCategory(review.getCategory()));
-//        return reviewRepository.findByCategory(review.getCategory());
-//    }
+
+    @GetMapping("/title/{title}")
+    public List<Review> titleSearch(@PathVariable String title) {
+        return reviewService.findByTitle(title);
+    }
+
 }
