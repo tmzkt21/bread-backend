@@ -11,10 +11,10 @@ spring:
     generate-ddl: true
 
   datasource:
-    password: mariadb
+    password: mydbinstance
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://127.0.0.1:3306/mariadb
-    username: mariadb
+    url: jdbc:mariadb://mydbinstance.cuiorfxn83wo.ap-northeast-2.rds.amazonaws.com:3306/mydatabase
+    username: mydbinstance
 
 
 #
