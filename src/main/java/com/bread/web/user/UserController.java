@@ -34,7 +34,6 @@ public class UserController {
         } else {
             return ResponseEntity.notFound().build();
         }
-
     }
     // 회원가입
     @PostMapping("/register")
